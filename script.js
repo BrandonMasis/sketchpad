@@ -1,5 +1,4 @@
 // Create from 16x16 to 100x100 grids of square divs
-
 const squaresContainer = document.querySelector('#squares-container');
 
 gridGenerator(16);
@@ -30,4 +29,13 @@ function addGlobalEventListener(type, selector, callback) {
 
 addGlobalEventListener('mouseover', '.square', (e) => {
   e.target.style.backgroundColor = '#68b0abff';
+});
+
+addGlobalEventListener('click', '#sizeSelector', (e) => {
+  let size = prompt('Enter size');
+  if (size >= 16 && size <= 100) {
+    gridGenerator(size);
+  } else {
+    alert('Incorrect size, Minimun 16 | Maximun 100');
+  }
 });
