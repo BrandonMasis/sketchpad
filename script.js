@@ -28,7 +28,14 @@ function addGlobalEventListener(type, selector, callback) {
 }
 
 addGlobalEventListener('mouseover', '.square', (e) => {
-  e.target.style.backgroundColor = '#68b0abff';
+  let currentOpacity = parseFloat(window.getComputedStyle(e.target).opacity);
+
+  if (currentOpacity < 1) {
+    currentOpacity += 0.1;
+  }
+
+  e.target.style.backgroundColor = `#68b0abff`;
+  e.target.style.opacity = currentOpacity;
 });
 
 addGlobalEventListener('click', '#sizeSelector', (e) => {
